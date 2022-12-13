@@ -1,0 +1,50 @@
+<div class="card card-default">
+	<div class="card-header card-header-border-bottom">
+		<h2>List of Products</h2>
+	</div>
+	<div>
+   <%= pie_chart Product.group(:name).maximum(:stock) ,colors: ["green","orange","blue","red"],dataset: {borderWidth: 1, hoverOffset: 15 }%><br>
+  </div>
+	<div class="card-body">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th width="30%">Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<% if can? :destroy, Product %>
+  					<th>Stock</th>
+					<%end%>
+					<th>Status</th>
+					<% if can? :destroy, Product %>
+					 <th width="15%"></th>
+				  <%end%>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @products.each do |product| %>
+					<tr>
+						<td >
+								<%= image_tag(product.image_url, class: 'myclass') if product.image.present?%>
+						</td>
+						<td><%= product.name %></td>
+						<td><%= product.description %></td>
+						<td><%= product.price %></td>
+						<% if can? :destroy, Product %>
+						 <td><%= product.stock %></td>
+						<%end%>
+						<td><%= product.status == 1 ? 'Active' : 'Inactive' %></td>
+						<% if can? :destroy, Product %>
+							<td class="text-center">
+							<%= link_to 'Edit', edit_product_path(product), :class => 'badge badge-info' %>
+							<%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'badge badge-danger' %></td>
+							</tr>
+						<%end%>
+				<% end %>
+			</tbody>
+		</table>
+		<%= link_to 'New Product', new_product_path %>
+	</div>
+</div>

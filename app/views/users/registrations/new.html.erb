@@ -1,0 +1,64 @@
+
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+
+  <div class="row d-flex justify-content-center align-items-center h-100 ">
+      <div class="col-lg-6 mb-2 mb-lg-0">
+         <div class= "card shadow card mb-3" >
+           <div class= "card-header bg-dark ">
+             <h3 class= "card-title text-center "> Sign up</h3>
+           </div>
+           <div class= "card-body ">
+              <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= f.error_notification %>
+                <%= render "users/shared/error_messages", resource: resource %>
+                 <div class= "form-group">
+                   <div class= "form-group" >
+                  <%= f.label :name , class:' mb-1'%>
+                  <%= f.text_field :name  , class:" form-control form-control-lg "%>
+                </div>
+                <div class= "form-group">
+                  <%= f.label :email , class:' mb-1' %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:" form-control form-control-lg "%>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password  , class:' mb-1' %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password", class:" form-control form-control-lg " %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password_confirmation  , class:' mb-1'%>
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:" form-control form-control-lg mb-2 " %>
+                </div>
+                 <div class= "form-group" >
+                  <%= f.label :branch_name , class:' mb-1'%>
+                  <%= f.text_field :branch_name  , class:" form-control form-control-lg "%>
+                </div>
+                <div class= "form-group" >
+                  <%= f.label :image , class:' mb-1'%>
+                  <%= f.file_field :image  , class:" form-control form-control-lg "%>
+                </div>
+
+
+                <div class="actions" >
+                  <%= f.submit "Sign up" , class: ' btn btn-lg btn-primary bg-dark '%>
+                </div>
+              <% end %>
+
+              <%= render "users/shared/links" %>
+           </div>
+         </div>
+      </div>
+   </div>
+ </div>
+</section>
+
+
+<% end %>
+

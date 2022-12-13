@@ -1,0 +1,54 @@
+<div class="card card-default">
+	<div class="card-header card-header-border-bottom">
+		<h2>List of Orders</h2>
+	</div>
+  
+		<%= column_chart Order.group_by_day_of_week(:created_at, format: "%a").maximum(:total) %>
+	<div class="card-body">
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Branch Name</th>
+					<th>Order date</th>
+					<th>Total</th>
+					<th>Status</th>
+					<th>User</th>
+					<th colspan="3" width="15%"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @orders.each do |order| %>
+					<tr>
+						<td><%= order.user.branch_name %></td>
+						<td><%= time_format order.order_date %></td>
+						<td><%= currency_format order.grand_total %></td>
+						<td><%= order.status_name %></td>
+						<td><%= order.user&.name %></td>
+						<td>
+							<% if can? :read, order %>
+								<%= link_to 'Show', order %>
+							<% end %>
+						</td>
+						<td>
+						<% if can? :edit, order %>
+								<%= link_to 'Edit', edit_order_path(order) %>
+							<% end %>
+						</td>
+						<td>
+						<% if can? :destroy, order %>
+								<%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+							<% end %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		<div class="digg_pagination">
+			<%= will_paginate @orders %>
+		</div>
+		<div class="form-footer pt-5 border-top text-right" style="margin-top: 10px">
+			<%= link_to 'New Order', new_order_path, class: 'btn btn-primary' %>
+		</div>
+	</div>
+</div>

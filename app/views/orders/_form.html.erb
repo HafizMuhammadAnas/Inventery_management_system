@@ -1,0 +1,42 @@
+<%= simple_form_for(@order) do |f| %>
+<div class="card-body">
+	<div class="row">
+		<div>
+				<h1 >
+				  Branch Name:<%= current_user.branch_name %></strong>
+				</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="form-group">
+				<%= f.label :order_date %>
+				<% order_date = @order.order_date ? @order.order_date : Time.now %>
+				<%= f.text_field :order_date, value: time_format(order_date), class: 'form-control input-lg', readonly: true %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered">
+				<thead>
+					<th>Product</th>
+					<th width="15%">Price</th>
+					<th width="10%">QTY</th>
+					<th width="15%">Sub Total</th>
+					<th width="10%"></th>
+				</thead>
+				<tbody class="fields">
+					<%= f.simple_fields_for :items do |builder| %>
+						<%= render 'item', f: builder %>
+					<% end %>
+				</tbody>
+			</table>
+			<%= link_to_add_row('Add Item', f, :items, class: '') %>
+		</div>
+	</div>
+	<div class="form-footer pt-5 border-top">
+		<%= f.submit class: 'btn btn-primary btn-default' %>
+	</div>
+</div>
+<% end %>

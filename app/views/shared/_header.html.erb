@@ -1,0 +1,77 @@
+<!-- Header -->
+		<header class="main-header" id="header" style="padding-left: 0px; position; none !important ">
+				<!-- Sidebar toggle button -->
+				<nav class="navbar navbar-expand navbar-dark bg-primary" style="padding-right: 0px;">
+				<a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
+				<span class="navbar-toggler-icon"></span></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#sidebar" aria-controls="sidebar" aria-expanded="false"
+				aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+				 </button>
+
+				<%# <button id="sidebar-toggler" class="sidebar-toggle">
+					<span class="sr-only">Toggle navigation</span>
+				</button> %>
+				<!-- search form -->
+				<div class="search-form d-none d-lg-inline-block">
+				</div>
+
+				<div class="navbar-right" style="width: 120px;">
+					<ul class="nav navbar-nav">
+						<!-- User Account -->
+						<li class="dropdown user-menu">
+              <% if current_user.present? %>
+								<button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+									<%= image_tag(current_user.image_url, :class => "user-image", :alt => "User Image") %>
+								</button>
+							<% end%>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<!-- User image -->
+								<li class="dropdown-header">
+									<img src="/uploads/user/image/1/something.jpg" class="img-circle" alt="User Image" />
+									<div class="d-inline-block">
+									<%if current_user.present?%>
+										<%= current_user.name %> <small class="pt-1"><%= current_user.email %></small>
+										<%end%>
+									</div>
+								</li>
+								<li>
+									<a href="<%= edit_user_registration_path(current_user) %>">
+										<i class="mdi mdi-account"></i> My Profile
+									</a>
+								</li>
+								<% if user_signed_in? %>
+								<li class="dropdown-footer">
+									<a href="<%= destroy_user_session_path %>" data-method="delete"> <i class="mdi mdi-logout"></i> Log Out </a>
+								</li>
+								<li class="dropdown-footer">
+									<a href="<%= edit_user_path %>"> <i class="mdi mdi-logout"></i> Change Password </a>
+								</li>
+								<% end %>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			</nav>
+
+
+		</header>
+
+       <script>
+          $(function(){
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#sidebar").toggleClass("toggled");
+            });
+
+            $(window).resize(function(e) {
+              if($(window).width()<=768){
+                $("#sidebar").removeClass("toggled");
+              }else{
+                $("#sidebar").addClass("toggled");
+              }
+            });
+          });
+
+        </script>

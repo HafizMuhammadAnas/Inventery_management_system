@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bayer_name: MyString
+  catagory: MyString
+  product: MyString
+  quantity: 9.99
+  price: 9.99
+  total_price: 9.99
+
+two:
+  bayer_name: MyString
+  catagory: MyString
+  product: MyString
+  quantity: 9.99
+  price: 9.99
+  total_price: 9.99
