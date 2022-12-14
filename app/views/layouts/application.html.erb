@@ -26,16 +26,14 @@
 			<div class="page-wrapper" style="padding-left: 0px; padding-top: 0px;">
 				<%= render 'shared/header' %>
 				<div class="content-wrapper">
-            		<div class="content">
+            		<div class="content" style="width:80%;">
             			<% flash.each do | key, value | %>
             				<%
             					flash_type = (key == 'notice')? 'success' : 'danger'
             				%>
             				<p id="notice" class="alert alert-<%= flash_type %>"><%= value %></p>
             			<% end %>
-
-                  <p class="alert"><%= alert %></p>
-
+                 
 						<%= yield %>
 					</div>
 				</div>

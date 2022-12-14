@@ -8,6 +8,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'rails-bootstrap-tabs', '~> 0.3.2'
 
 gem 'cancancan'
 gem 'simple_form'

@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 	# GET /orders.json
 	def index
 		@orders = Order.includes(:user).paginate(page: params[:page], per_page: 10).order(order_date: :desc)
-	  
+
 
 	end
 
@@ -45,15 +45,11 @@ class OrdersController < ApplicationController
 		@order.order_date = Time.now
 		@order.status = 1
 
-		respond_to do |format|
-			if @order.save
-				format.html { redirect_to @order, notice: 'Order was successfully created.' }
-				format.json { render :show, status: :created, location: @order }
-			else
-				format.html { render :new }
-				format.json { render json: @order.errors, status: :unprocessable_entity }
-			end
-		end
+		if @order.save
+      redirect_to @order
+    else
+      render :new, status: :unprocessable_entity
+    end
 	end
 
 	# PATCH/PUT /orders/1

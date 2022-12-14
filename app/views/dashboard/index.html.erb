@@ -1,6 +1,26 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
-
-<div style= " width: 500px">
-<%= pie_chart(@data)%>
+<div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a data-toggle="tab" class="nav-link active" href="#Products">Products</a>
+    </li>
+    <li class="nav-item">
+      <a data-toggle="tab" class="nav-link my-custom-class" href="#Order"> Placed Order </a>
+    </li>
+    <li class="nav-item">
+      <a data-toggle="tab" class="nav-link my-custom-class" href="#revenue">Genrated Revenue </a>
+    </li>
+  </ul>
+  <div class="tab-content my-padding">
+    <div id="Products" class="tab-pane active fade show" role="tabpanel">
+      <%= pie_chart Product.group(:name).maximum(:stock) ,colors: ["green","orange","blue","red"],dataset: {borderWidth: 1, hoverOffset: 10 }%><br>
+    </div>
+    <div id="Order" class="tab-pane active fade in" role="tabpanel">
+      <%= column_chart Order.group_by_day_of_week(:created_at, format: "%a").maximum(:total) %>
+    </div>
+    <div id="revenue" class="tab-pane fade in" role="tabpanel">
+      <span>
+          <%= column_chart Order.group_by_day_of_week(:created_at, format: "%a").maximum(:total),xtitle: "Day", ytitle: "Revenue" ,colors: ["green","orange","blue","red"]%><br>
+    </span>
+    </div>
+  </div>
 </div>

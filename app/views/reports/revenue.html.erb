@@ -2,7 +2,6 @@
 	<div class="card-header card-header-border-bottom">
 		<h2>Revenue Reports</h2>
 	</div>
-	<%= column_chart Order.group_by_day_of_week(:created_at, format: "%a").maximum(:total),xtitle: "Day", ytitle: "Revenue" ,colors: ["green","orange","blue","red"]%><br>
 	<div class="card-body">
 		<table class="table table-bordered table-striped">
 			<thead>

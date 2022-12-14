@@ -1,14 +1,9 @@
-<% if product.errors.any? %>
-	<div id="error_explanation" class="alert alert-danger">
-		<h3><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h3>
+<% if @product.errors.any? %>
+  <% @product.errors.full_messages.each do |message| %>
+  <p>  <%= message %></p>
+	<%end%>
+<%end %>
 
-		<ul>
-		<% product.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-		<% end %>
-		</ul>
-	</div>
-<% end %>
 <div class="card card-default">
 	<div class="card-header card-header-border-bottom">
 		<h2>Product</h2>

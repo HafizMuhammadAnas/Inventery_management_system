@@ -2,10 +2,7 @@
 	<div class="card-header card-header-border-bottom">
 		<h2>List of Products</h2>
 	</div>
-	<div>
-   <%= pie_chart Product.group(:name).maximum(:stock) ,colors: ["green","orange","blue","red"],dataset: {borderWidth: 1, hoverOffset: 15 }%><br>
-  </div>
-	<div class="card-body">
+		<div class="card-body">
 		<table class="table table-bordered table-striped">
 			<thead>
 				<tr>

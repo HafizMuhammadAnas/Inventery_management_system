@@ -26,15 +26,11 @@ class PaymentsController < ApplicationController
 	def create
 		@payment = Payment.new(payment_params)
 
-		respond_to do |format|
-			if @payment.save
-				format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-				format.json { render :show, status: :created, location: @payment }
-			else
-				format.html { render :new }
-				format.json { render json: @payment.errors, status: :unprocessable_entity }
-			end
-		end
+		if @payment.save
+      redirect_to @payment
+    else
+      render :new, status: :unprocessable_entity
+    end
 	end
 
 	# PATCH/PUT /payments/1
