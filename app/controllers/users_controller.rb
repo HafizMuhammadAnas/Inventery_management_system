@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  def index
+    @user = User.all
+  end
+  def import
+   @import = User.import(params[:file].path)
+    redirect_to user_path, notice: 'Users imported!'
+  end
 
   def edit
     @user = current_user

@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
 	}
-	resource :user, only: [:edit] do
+	resource :user, only: [:edit, :index ] do
 		collection do
 			patch 'update_password'
+			post :import
+			get :index
 		end
 	end
   get 'hello/index'
