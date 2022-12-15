@@ -1,0 +1,36 @@
+<div class="card card-default">
+	<div class="card-header card-header-border-bottom">
+		<h2>List of Orders</h2>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered table-striped display" id="your-table-id">
+			<thead>
+				<tr>
+					<th>Branch Name</th>
+					<th>Order date</th>
+					<th>Total</th>
+					<th>Status</th>
+					<th>User</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @orders.each do |order| %>
+					<tr>
+						<td><%= order.user.branch_name %></td>
+						<td><%= time_format order.order_date %></td>
+						<td><%= currency_format order.grand_total %></td>
+						<td><%= order.status_name %></td>
+						<td><%= order.user&.name %></td>
+
+					</tr>
+				<% end %>
+
+			</tbody>
+		</table>
+
+
+		<div class="form-footer pt-5 border-top text-right" style="margin-top: 10px">
+		</div>
+	</div>
+</div>

@@ -1,3 +1,4 @@
+require 'csv'
 class OrdersController < ApplicationController
 	load_and_authorize_resource
 
@@ -11,14 +12,33 @@ class OrdersController < ApplicationController
 	# GET /orders.json
 	def index
 		@orders = Order.includes(:user).paginate(page: params[:page], per_page: 10).order(order_date: :desc)
-
+		respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "order" ,  # Excluding ".pdf" extension.
+				:template => 'orders/index.pdf.erb'
+      end
+    end
 
 	end
+	def export
+			@orders = Order.all
+     respond_to do |format|
+      format.html
+      format.csv { send_data Order.to_csv, filename: "orders-#{Date.today}.csv" }
+    end
+  end
 
 	# GET /orders/1
 	# GET /orders/1.json
 	def show
-
+		respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "order" ,  # Excluding ".pdf" extension.
+				:template => 'orders/show.pdf.erb'
+      end
+    end
 	end
 
 	# GET /orders/new

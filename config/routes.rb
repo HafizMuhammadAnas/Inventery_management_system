@@ -19,8 +19,13 @@ Rails.application.routes.draw do
 			get 'payment'
 			post 'save_payment'
 		end
+		collection do
+			get :export
+		end
 	end
 	root :to => 'dashboard#index'
 	resources :products
+	get "search", 	to:"products#search"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

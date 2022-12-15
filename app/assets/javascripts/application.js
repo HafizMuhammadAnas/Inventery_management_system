@@ -19,7 +19,9 @@
 //= require bootstrap-sprockets
 //= require chartkick
 //= require Chart.bundle
-
+$(document).ready( function () {
+  $('#your-table-id').DataTable();
+} );
 function calculatePerItem (itemKey, productId, qty) {
 	$.ajax({
 		url: '/products/' + productId + '.json',

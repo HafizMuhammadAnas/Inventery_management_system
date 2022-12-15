@@ -94,3 +94,5 @@ group :development do
     gem 'dotenv-rails'
 end
 gem 'carrierwave', '~> 2.2', '>= 2.2.3'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

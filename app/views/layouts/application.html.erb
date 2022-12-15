@@ -7,7 +7,9 @@
 
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
 		<%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" %>
 		<%= stylesheet_link_tag "https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" %>
 		<%= stylesheet_link_tag "sleek/sleek.css" %>
@@ -26,14 +28,14 @@
 			<div class="page-wrapper" style="padding-left: 0px; padding-top: 0px;">
 				<%= render 'shared/header' %>
 				<div class="content-wrapper">
-            		<div class="content" style="width:80%;">
+            		<div class="content" style="width:90%;">
             			<% flash.each do | key, value | %>
             				<%
             					flash_type = (key == 'notice')? 'success' : 'danger'
             				%>
             				<p id="notice" class="alert alert-<%= flash_type %>"><%= value %></p>
             			<% end %>
-                 
+
 						<%= yield %>
 					</div>
 				</div>

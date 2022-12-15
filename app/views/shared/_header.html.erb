@@ -9,20 +9,19 @@
 				aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
 				 </button>
 
-				<%# <button id="sidebar-toggler" class="sidebar-toggle">
-					<span class="sr-only">Toggle navigation</span>
-				</button> %>
 				<!-- search form -->
 				<div class="search-form d-none d-lg-inline-block">
+
 				</div>
 
 				<div class="navbar-right" style="width: 120px;">
-					<ul class="nav navbar-nav">
+        	<ul class="nav navbar-nav">
+
 						<!-- User Account -->
 						<li class="dropdown user-menu">
               <% if current_user.present? %>
 								<button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-									<%= image_tag(current_user.image_url, :class => "user-image", :alt => "User Image") %>
+									<%#= image_tag(current_user.image_url, :class => "user-image", :alt => "User Image") %>
 								</button>
 							<% end%>
 							<ul class="dropdown-menu dropdown-menu-right">

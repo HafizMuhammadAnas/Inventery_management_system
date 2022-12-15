@@ -1,5 +1,18 @@
 class Order < ApplicationRecord
-	before_destroy :no_referenced_items
+	require 'csv'
+
+  def self.to_csv
+    columns = %w{id order_date grand_total status_name }
+
+    CSV.generate(headers: true) do |csv|
+      csv << columns
+
+      all.each do |order|
+        csv << columns.map{ |attr| order.send(attr) }
+      end
+    end
+  end
+  before_destroy :no_referenced_items
 	# before_create :set_order_code
 	before_save :set_total
 
