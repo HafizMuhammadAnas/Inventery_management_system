@@ -3,9 +3,9 @@ default: &default
   encoding: unicode
   pool:     <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
   host:     <%= ENV.fetch('POSTGRESS_HOST', 'localhost') %>
-  database: <%= ENV.fetch('POSTGRESS_DATABASE') %>
-  username: <%= ENV.fetch('POSTGRESS_USER') %>
-  password: <%= ENV.fetch('POSTGRESS_PASSWORD') %>
+  database: inventory_db2
+  username: postgres
+  password: 123456
 
 test:
   <<: *default
