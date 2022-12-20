@@ -21,17 +21,17 @@
 						<li class="dropdown user-menu">
               <% if current_user.present? %>
 								<button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-									<%#= image_tag(current_user.image_url, :class => "user-image", :alt => "User Image") %>
+								<%= image_tag(current_user.image_url, class: 'myclass') if current_user.image.present? %>
+
 								</button>
 							<% end%>
 							<ul class="dropdown-menu dropdown-menu-right">
 								<!-- User image -->
 								<li class="dropdown-header">
-									<img src="/uploads/user/image/1/something.jpg" class="img-circle" alt="User Image" />
 									<div class="d-inline-block">
 									<%if current_user.present?%>
 										<%= current_user.name %> <small class="pt-1"><%= current_user.email %></small>
-										<%end%>
+									<%end%>
 									</div>
 								</li>
 								<li>

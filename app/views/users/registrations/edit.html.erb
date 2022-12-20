@@ -5,7 +5,7 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: {turbo: false}) do |f| %>
            <%= render "users/shared/error_messages", resource: resource %>
           <div>
-            <%= image_tag(current_user.image_url, class: 'myclass_a', :size => "80x80", :alt => "Add  icon" , :id =>'blah') if current_user.image.present?%>
+            <%= image_tag(current_user.image.url, class: 'myclass_a', :size => "80x80", :alt => "Add  icon" , :id =>'blah') if current_user.image.present?%>
           </div>
           <div class="field">
             <%= f.label :image %><br />
