@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
 	def index
 		@products = Product.all
 	end
-	
+
 
 
 
@@ -86,7 +86,7 @@ class ProductsController < ApplicationController
 		# Never trust parameters from the scary internet, only allow the white list through.
 		def product_params
 			params[:product][:slug] = params[:product][:name].parameterize
-			params.require(:product).permit( :name, :slug, :price, :stock, :description, :status, :image)
+			params.require(:product).permit( :name, :slug, :price, :stock, :description, :status, :image, :product_image)
 		end
 
 		def set_status

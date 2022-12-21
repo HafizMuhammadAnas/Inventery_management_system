@@ -25,7 +25,7 @@
 				<% @products.each do |product| %>
 					<tr>
 						<td >
-								<%= image_tag(product.image_url, class: 'myclass') if product.image.present?%>
+								<%= image_tag(product.product_image.url(:medium), class: 'myclass') if product.product_image.present?%>
 						</td>
 						<td><%= product.name %></td>
 						<td><%= product.description %></td>

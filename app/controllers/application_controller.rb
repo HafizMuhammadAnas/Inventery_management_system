@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :address, :name, :role, :password, :password_confirmation, :current_password, :contect_number ,:branch_name,:account_update,  :update_attrs, :image ])
-		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password,:password_confirmation, :current_password, :image)}
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :address, :name, :role, :password, :password_confirmation, :current_password, :contect_number ,:branch_name,:account_update,  :update_attrs, :image, :user_image])
+		devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:email, :password,:password_confirmation, :current_password, :image, :user_image)}
   end
 
 	rescue_from CanCan::AccessDenied do |exception|

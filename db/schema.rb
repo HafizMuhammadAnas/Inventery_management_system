@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_09_132214) do
+ActiveRecord::Schema.define(version: 2022_12_20_141236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,10 @@ ActiveRecord::Schema.define(version: 2022_12_09_132214) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "product_image_file_name"
+    t.string "product_image_content_type"
+    t.integer "product_image_file_size"
+    t.datetime "product_image_updated_at"
     t.index ["name"], name: "index_products_on_name", unique: true
     t.index ["sku"], name: "index_products_on_sku", unique: true
     t.index ["slug"], name: "index_products_on_slug", unique: true
@@ -88,6 +92,10 @@ ActiveRecord::Schema.define(version: 2022_12_09_132214) do
     t.string "contect_number"
     t.string "branch_name"
     t.string "image"
+    t.string "user_image_file_name"
+    t.string "user_image_content_type"
+    t.integer "user_image_file_size"
+    t.datetime "user_image_updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

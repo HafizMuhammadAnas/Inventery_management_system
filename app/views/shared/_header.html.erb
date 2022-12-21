@@ -21,7 +21,7 @@
 						<li class="dropdown user-menu">
               <% if current_user.present? %>
 								<button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-								<%= image_tag(current_user.image_url, class: 'myclass') if current_user.image.present? %>
+								<%= image_tag(current_user.user_image.url(:medium), class: 'myclass') if current_user.user_image.present? %>
 
 								</button>
 							<% end%>

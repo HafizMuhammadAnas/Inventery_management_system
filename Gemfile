@@ -96,3 +96,4 @@ end
 gem 'carrierwave', '~> 2.2', '>= 2.2.3'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'paperclip', '~> 5.2', '>= 5.2.1'
