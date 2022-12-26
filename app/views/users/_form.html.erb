@@ -1,0 +1,73 @@
+<div class="card card-default">
+	<div class="card-header card-header-border-bottom">
+		<h2>Add New User</h2>
+	</div>
+	<div class="card-body">
+		<%= form_with(model: @user) do |form| %>
+
+			<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :name %>
+				</div>
+				<div class="col-12 col-md-9">
+					<%= form.text_field :name, :class => 'form-control' %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :email %>
+				</div>
+				<div class="col-12 col-md-9">
+					<%= form.email_field :email, :class => 'form-control' %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :password %>
+				</div>
+				<div class="col-12 col-md-9">
+					<%= form.password_field :password, :class => 'form-control' %>
+				</div>
+      </div>
+			<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :role %>
+				</div>
+				<div class="col-12 col-md-9">
+					<%= form.text_field :role, :class => 'form-control' %>
+				</div>
+			</div>
+
+				<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :branch_name %>
+				</div>
+				<div class="col-12 col-md-9">
+			  	<%= form.text_field :branch_name, :class => 'form-control' %>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :address %>
+				</div>
+				<div class="col-12 col-md-9">
+					<%= form.text_field :address, :class => 'form-control' %>
+				</div>
+			</div>
+		
+			<div class="form-group row">
+				<div class="col-12 col-md-3 text-right">
+					<%= form.label :user_image %>
+				</div>
+				<div class="col-12 col-md-9">
+					<%= form.file_field :user_image, :class => 'form-control' %>
+				</div>
+			</div>
+
+			<div class="form-footer pt-5 border-top">
+				<%= form.submit :class => 'btn btn-primary btn-default'%>
+				<%= link_to 'Back to users', users_path %>
+			</div>
+		<% end %>
+	</div>
+</div>

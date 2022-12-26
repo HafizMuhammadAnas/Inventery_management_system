@@ -3,12 +3,7 @@
 				<!-- Sidebar toggle button -->
 				<nav class="navbar navbar-expand navbar-dark bg-primary" style="padding-right: 0px;">
 				<a href="#menu-toggle" id="menu-toggle" class="navbar-brand">
-				<span class="navbar-toggler-icon"></span></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#sidebar" aria-controls="sidebar" aria-expanded="false"
-				aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
-				 </button>
-
+				<span class="navbar-toggler-icon" ></span></a>
 				<!-- search form -->
 				<div class="search-form d-none d-lg-inline-block">
 
@@ -21,7 +16,9 @@
 						<li class="dropdown user-menu">
               <% if current_user.present? %>
 								<button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-								<%= image_tag(current_user.user_image.url(:medium), class: 'myclass') if current_user.user_image.present? %>
+								<%#= image_tag(current_user.user_image.url(:medium), class: 'myclass') if current_user.user_image.present? %>
+								<td><%=  current_user.user_image.present? ? image_tag(current_user.user_image.url(:medium), class: 'myclass', style: "width: 50px; height: 50px") :  image_tag('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAHsAewMBEQACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAAAQIEBQYHAwj/xAA3EAABAwMBBAYHCAMAAAAAAAABAAIDBAURIQYSMVETFEFhcZEHIjJCU4GhI1JikqKxwdEzQ3L/xAAbAQEBAAIDAQAAAAAAAAAAAAAAAQIGAwQFB//EADMRAAIBAgQEBAUDBAMAAAAAAAABAgMRBBIhMQVBUZEGFFKxE1NhcdEioeFCgcHwIzIz/9oADAMBAAIRAxEAPwDoa+VHuhQBAEAVAUAVAQBQBVIBLkChQqAgCXAUAQBWwCgCoCgCy22IFiUIAgCAIAgCoCgCAIAqgEAUAQBAUve2NjnyOaxjRlznHAA5krKMXJ2W5DSL16R6KkkdFbYetOGnSPJaz5Difotgw3AKk1mrPL9N3/BwyrJbGvu9I94kflraZg5CE4+pXorgOES59zj+NIu6D0mVQkArKWnlZn3Mxu+uQuGr4fotf8cmvvqVV3zN7sd9oL3CZKKQ77MdJE/R7PEcu8aLXsXga2ElaotOT5M54zUtjJrpmYCtgEbuAoAgCAIAgCoCEChTl3pP2jklrTZaV5bDDg1BHvvIyG+A0+fgtu4HgYwp+Ylu9vsdWtP+k0DvWwHXJc7OjfZQEIDI2O61FquENVTuIew6a6EdrT3FcGIw8MRTdOez/wBuZxk0zvFDVR11HBVw56OaNr255EZXz2tSdKo6ct0d6LurnuuIoQBUBAFAFQFAMq3AUAVB89Xic1N4r53HJkqZX57i84X0fDwUKEIrkl7Hnyd2XGzNgqdp7iaWnJjpoxvT1G7kM5DvJPZ4lZzmoK7EIObsZG+7A3ezxunpntr4G6uEbC14H/OufkfksYVoy0ehlKjKOq1NZY9rxlpXKcZ6NGmToOxAdp9HM5m2SpQ45Mbnt/USP3Wj8bgo42VudvY7tF3ibKvKOUKALIgUKFAEAVAUAQBUhwSHZ64zXe1Ut0p5aOG4yEsccBxaNXHHEHHMdq+lZ4qLyvY6Kg3JJ8ztlot9Ja6CKkt8DIIGj2W9p5k8Se8rpSk5O7O5GKirIu3NDhghYlNI2r2DprlM6tt5bS1h1dp9nKfxAcD3j6rnp1nHR6o4p0U9Vuc/uOz13t8kbayjc0SSCKIscHh7jwAxzXYjOMtmdeUJR3R1fYC31lr2fFNcITDN0znbhcDgHGOBIWncdaeLuuiO1STUdTZF4pyhAEAQBAFlsQLEoQBAMqgwO0FuFVcrPWBwDqKd7iCPaDmFuPMg/Jb1QrKdLMv6kjjlG7T6GYhOY29ypmVoQIDGXW2CuqbZK3dHVKsTuHMBjh+5B+SyjK1zGSvYyrRotY4xUUq6guS99fwZlS8kEKFCoCgCy0IFiUKgYSwCgCAtblHmDeHuuyvb4Vi5KaoSenIhRSyjALvZK2IF1nOo4KECADUrqY3EeXoua35FPQLUZzlOTnLdgFYFIQBAFQFAFQAgJRsEKAICCMjB1CqbTugY6qgdSDpm/wCEnGp7VtWBx3x0ozX6v2f89TG62EVSB7LsdxXolPVlQ6R4jYWF54ALCpUjTi5y2BeRsLfaOXHitTxuLliZ3eiWyCKl0ygqAhWwCrAWICAIAgCAKkPGqrKajj6Sqnjib2bxxnwXYw2Dr4qWWjByf0/OyOGtiKVFXqSSMBV7X0zHblFTyTu+871G/wBrZML4Trz1xE1H6LV/j3PFr+IKUdKUc330X5No2TuVNtDZ5KWugiE0Z+0iPAgnRw/b5LZKfD6eEpRox1j9TDC494m89pIt6rZJ0VSOpzgwvdgNldgs/tdeeFd/0nrQxit+vczdBaaK0QuqHkF7Glz5n6boHHHJc9OhGG2rOrWxMpJ30RpLtrGPrJXGlIgc8lhafWA7Mgry8d4UVWTqUKlm9bNad1r+zPOo+Icryzhp1W/Z/kytHdKOswIJm733HaO8lq2M4RjcH/6w06rVd1/k9vDcRw2I/wCktemzLsrzTvBAFAEAQBVgKAIDB7V3WW20sTKZ27LM4+tjO6ANceYWxeHeGUsbWlKsrxjy6t7ezPG4xjZ4anFU3aUvZGjlz6qo3pnuke7i5ziSvo1OnCnFQgrJckafUnKbcpO7LpjWsGGjAXJY4i5oK6pttXHV0Um5NHz1Dh2tI7Qf65LGUFJWZyUasqU1OO5kL1tLX3espqkZo+retCxj84f2uPPljl4rjhRUU0+Z2K+NqVZxktLFzf8Aa6qvVIykZAaWHAM/rZMjh2D8OfNSnQUHdnJisfKtDIlZczX1znnDGT3oUy1qvVVTTRxTSmSAkNIfqWjmDxWvcV4DhsTTlOnHLU300T+62/vuevgOK1qM4wnK8Ntd19bm5L5obuEAVSISrcEKFCgCA0bbefpLpHCDpFEPMnP8BfRPClHJgpVPVJ/tZe9zT+PVM2JUOi9zC0g9cnkMLZzwpF2qYgjAQoQgQBAScDQeaFKSMghUj2OhUUvTUcEucl8bT9F8dx1L4OKqU+kn7n0fC1Pi0IT6pHuuodgIAgCoJ4IkQpJGMkgeKLVlObbQztnvdW8OBAfujXlp/C+r8Goulw+lG3K/fU0HiVRTxlR3527aHjR46MnI1K9RHnykupcBwHaM+KWJmXUjI5jzQmZdRkcx5oMy6jI5jzQZl1GRzHmgzLqMjmPNBmXUZHMeaDMupu+z0gktFP6wy0FvHkSF8u8QUnHiVX6tPukb7weWbBU/tbszJLxD0wqAoAqAgPGanEpzvEFZxnlM4zyls63jU7sZ8WrsrGVPU+7Jak94rsU9RI4RMx3AK+cqet92XLR9K7Ip6mfgt8gr5yp8x92MlD0rsOqn4A/Kr5up8x92X4dD0rsiOqn4A/KnmqvzH3Y+HR9K7Inqp+B+lXzVT5j7sfDo+ldkOqH4I8gsfN1PmPuyZKHpXYkUTj/pb5BPOVPmPuxko+ldioUHNjAPBTzlT1y7v8ky0fSuyPVlGG+9gcmjC4amIlN3ev3KpRirRVi6AwAOS4DAlQBAEAQBUBXYgUKEAQBLgIAoAqAoAgCoGNEtoQKFCAICEBKoCgCAIAgCAIAVkwFiAgAWUdyAqMBQp//Z' , style: "width: 50px; height: 50px") %></td>
+
 
 								</button>
 							<% end%>
@@ -34,17 +31,18 @@
 									<%end%>
 									</div>
 								</li>
+								<% if user_signed_in? %>
 								<li>
-									<a href="<%= edit_user_registration_path(current_user) %>">
+									<a href="<%= user_path(current_user) %>">
 										<i class="mdi mdi-account"></i> My Profile
 									</a>
 								</li>
-								<% if user_signed_in? %>
+
 								<li class="dropdown-footer">
 									<a href="<%= destroy_user_session_path %>" data-method="delete"> <i class="mdi mdi-logout"></i> Log Out </a>
 								</li>
 								<li class="dropdown-footer">
-									<a href="<%= edit_user_path %>"> <i class="mdi mdi-logout"></i> Change Password </a>
+									<a href="<%= edit_user_path(current_user) %>"> <i class="mdi mdi-logout"></i> Change Password </a>
 								</li>
 								<% end %>
 							</ul>

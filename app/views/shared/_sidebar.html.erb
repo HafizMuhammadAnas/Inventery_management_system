@@ -3,10 +3,10 @@
 			——— LEFT SIDEBAR WITH FOOTER
 			=====================================
 	-->
-<aside id="sidebar" class="bg-sidebar toggled" style="background-color: #212a39;">
+<aside id="sidebar" class="bg-sidebar sidebar toggled" style="background-color: #212a39; position: absolute; z-index: 9999999999; margin-top: 75px">
 	<div  class="sidebar sidebar-with-footer">
 		<!-- Aplication Brand -->
-		<div class="app-brand">
+		<%# <div class="app-brand" style="display: flex; justify-content: space-between">
 			<a href="/">
 				<svg
 					class="brand-icon"
@@ -27,7 +27,7 @@
 				</svg>
 				<span class="brand-name">Hafiz Grand Mall</span>
 			</a>
-		</div>
+		</div> %>
 		<!-- begin sidebar scrollbar -->
 		<div class="sidebar-scrollbar">
 
@@ -88,6 +88,28 @@
 									</li>
 									<li class="<%= (@current_menu == 'reports' and @current_sub_menu == 'revenue') ? 'active' : ''%>">
 										<%= link_to 'Revenue', reports_revenue_path %>
+									</li>
+								</div>
+							</ul>
+						</li>
+					<%end%>
+				<%end%>
+				<% if current_user.present?%>
+					<% if current_user.role == 'admin'%>
+						<li class="has-sub <%= (@current_menu == 'users') ? 'active expand' : ''%>">
+							<a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#menu-users"
+								aria-expanded="false" aria-controls="ui-elements">
+								<i class="mdi mdi-image-filter-none"></i>
+								<span class="nav-text">Users</span> <b class="caret"></b>
+							</a>
+							<ul  class="collapse <%= (@current_menu == 'users') ? 'show' : ''%>"  id="menu-users"
+								data-parent="#sidebar-menu">
+								<div class="sub-menu">
+									<li class="<%= (@current_menu == 'users' and @current_sub_menu == 'All Users') ? 'active' : ''%>">
+										<%= link_to 'All Users', users_path %>
+									</li>
+									<li class="<%= (@current_menu == 'users' and @current_sub_menu == 'New User') ? 'active' : ''%>">
+										<%= link_to 'New User', new_user_path %>
 									</li>
 								</div>
 							</ul>

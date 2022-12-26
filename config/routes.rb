@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
+
 	devise_for :users, controllers: {
 		sessions: 'users/sessions',
 		passwords: 'users/passwords',
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
 	}
-	resource :user, only: [:edit, :index ] do
+	resources :users do
 		collection do
-			patch 'update_password'
+			patch :update_password
 			post :import
-			get :index
 		end
 	end
   get 'hello/index'

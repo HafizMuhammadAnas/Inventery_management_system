@@ -1,0 +1,15 @@
+<div class= "text-white bg-info mb-3" >
+  <style>
+    h1 {text-align: center;}
+  </style>
+
+          	<div><%= image_tag(@user.user_image.url(:medium), class: 'myclass') if @user.user_image.present?%></div>
+
+  <div><p><strong>Name</strong><br><%= @user.name%></p></div>
+  <div><p><strong>Brand_name</strong><br><%= @user.branch_name%></p></div>
+  <div><p><strong>Address</strong><br><%= @user.address%></p></div>
+  <div><p><strong>Email</strong><br><%= @user.email%></p></div>
+  <div><p><strong>Role</strong><br><%= @user.role%></p></div>
+  <div><p><strong>Contect Number</strong><br><%= @user.contect_number%></p></div>
+  <%= link_to 'Back', users_path() , class: 'btn btn-primary' %>
+</div>
