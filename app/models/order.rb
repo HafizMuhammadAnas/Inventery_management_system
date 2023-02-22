@@ -1,17 +1,8 @@
 class Order < ApplicationRecord
+	# self.abstract_class = true
 	require 'csv'
 
-  def self.to_csv
-    columns = %w{id order_date grand_total status_name }
 
-    CSV.generate(headers: true) do |csv|
-      csv << columns
-
-      all.each do |order|
-        csv << columns.map{ |attr| order.send(attr) }
-      end
-    end
-  end
   before_destroy :no_referenced_items
 	# before_create :set_order_code
 	before_save :set_total
@@ -22,7 +13,9 @@ class Order < ApplicationRecord
 	belongs_to :user
 
 	accepts_nested_attributes_for :items, allow_destroy: true
-
+	def self.to_csv
+		OrderExportJob.new.perform(all)
+	  end
 	def sub_totals
 	   self.items.map { |i| i.sub_total }
 	end

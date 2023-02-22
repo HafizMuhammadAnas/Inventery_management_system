@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 		end
 	end
 	root :to => 'dashboard#index'
+	get 'dashboard/exported_files'
+
 	resources :products
 	get "search", 	to:"products#search"
 

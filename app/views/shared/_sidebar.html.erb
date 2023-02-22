@@ -47,7 +47,11 @@
 							</li>
 
 							<li class="<%= (@current_menu == 'orders' and @current_sub_menu == '') ? 'active' : ''%>">
-								<%= link_to 'Orders', orders_path %>
+								<%= link_to 'Orders', orders_path,  data: { turbolinks: false } %>
+							</li>
+
+							<li class="<%= (@current_menu == 'orders' and @current_sub_menu == '') ? 'active' : ''%>">
+								<%= link_to 'Exported Files', dashboard_exported_files_path %>
 							</li>
 
 

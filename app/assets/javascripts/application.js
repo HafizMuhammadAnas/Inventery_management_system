@@ -21,6 +21,8 @@
 //= require Chart.bundle
 $(document).ready( function () {
   $('#your-table-id').DataTable();
+	// debugger
+	$(".intro").hide();
 } );
 function calculatePerItem (itemKey, productId, qty) {
 	$.ajax({

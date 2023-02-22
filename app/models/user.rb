@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  after_create :mail
+  # after_create :mail
   require 'csv'
 
     has_attached_file :user_image, styles: { medium: "300x300>", thumb: "100x100>" }
@@ -19,11 +19,11 @@ class User < ApplicationRecord
       user.save
     end
   end
-  def mail
-    # UsersMailer.send_greetings_notification(self)
-    UsersMailer.send_greetings_notification(self).deliver_now
+  # def mail
+  #   # UsersMailer.send_greetings_notification(self)
+  #   UsersMailer.send_greetings_notification(self).deliver_now
 
-  end
+  # end
   def grab_image(url)
     img = open(url)
     self.user_image.attachment(io: img, filename: 'pic.png')

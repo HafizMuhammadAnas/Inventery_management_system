@@ -2,6 +2,8 @@
 	<div class="card-header card-header-border-bottom">
 		<h2>List of Orders</h2>
 	</div>
+
+
 	<div class="card-body">
 		<table class="table table-bordered table-striped display" id="your-table-id">
 			<thead>
@@ -39,11 +41,21 @@
 			</tbody>
 		</table>
 		<div class="form-footer pt-5 border-top text-right" style="margin-top: 10px">
+		<p class="intro" style= "font-size: 150%; color: red;"> File is in processing</p>
+
 			<%= link_to 'New Order', new_order_path, class: 'btn btn-primary' %>
 			<%= link_to 'print', orders_path( format: 'pdf') ,class:"btn btn-info" %>
-			<%= link_to 'Export in CSV', export_orders_path(format: 'csv'), class: 'btn btn-primary' %>
+			<%#= link_to 'Export in CSV', export_orders_path(format: 'csv'), class: 'btn btn-primary' %>
 
+  <%= link_to 'Export Data', export_orders_path, remote: true, class: 'btn btn-primary export-btn',  id: "btn-c"%>
 
 		</div>
 	</div>
 </div>
+
+<script>
+	$('#btn-c').click(function () {
+  $(".intro").show();
+});
+
+</script>

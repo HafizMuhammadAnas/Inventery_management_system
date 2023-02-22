@@ -22,11 +22,22 @@ class OrdersController < ApplicationController
 
 	end
 	def export
-			@orders = Order.all
-     respond_to do |format|
-      format.html
-      format.csv { send_data Order.to_csv, filename: "orders-#{Date.today}.csv" }
-    end
+    file_name = "orders-#{Time.now}.csv"
+
+		export_file = Export.create(name: file_name, status: 'Panding')
+		OrderExportJob.perform_async(export_file.id)
+		head :accepted
+		# redirect_to dashboard_exported_files_path, notice: 'File succsessfully export.'
+
+
+		#  respond_to do |format|
+    #   format.html
+    #   format.csv { send_data Order.to_csv, filename: "orders-#{Date.today}.csv" }
+		# format.html {render status: :ok, json: orders.organize()}
+    # format.csv { send_data OrderExportJob.perform_async,
+    # 						  filename: "orders-#{Date.today}.csv" }
+    # end
+
   end
 
 	# GET /orders/1
@@ -107,6 +118,7 @@ class OrdersController < ApplicationController
 	def destroy
 		if @order.destroy
 			redirect_to orders_path, status: :see_other, notice: 'Product was successfully destroy.'
+
 		end
 
 		# respond_to do |format|

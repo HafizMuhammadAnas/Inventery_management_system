@@ -92,6 +92,8 @@ group :development do
     gem 'sshkit-sudo'
     gem 'faker'
     gem 'dotenv-rails'
+    gem 'sidekiq'
+    gem 'radis'
 end
 gem 'carrierwave', '~> 2.2', '>= 2.2.3'
 gem 'wicked_pdf'

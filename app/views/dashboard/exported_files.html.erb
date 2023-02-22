@@ -1,0 +1,33 @@
+<div class="card card-default">
+	<div class="card-header card-header-border-bottom">
+		<h2>List of exported files</h2>
+	</div>
+	<div class="card-body">
+		<table class="table table-bordered table-striped display" id="your-table-id">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Status</th>
+					<th>Download</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @exports.each do |export| %>
+					<tr>
+						<td><%= export.name %></td>
+						<td><%= export.status %></td>
+						<td>
+							<%#debugger%>
+							<% if export.status == 'Panding' %>
+							<%= link_to 'Download', class: 'btn btn-primary', :disabled => true %>
+							<%else%>
+								<%= link_to 'Download', export_orders_path(format: 'csv'), class: 'btn btn-primary'%>
+							<%end%>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
